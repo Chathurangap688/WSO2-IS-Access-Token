@@ -68,3 +68,13 @@ There are several ways to obtain access tokens.
     Kerberos Grant
 
  Once we obtain access token by one of these ways, we can access the resource server
+
+### Client Credentials Grant
+
+    Using this method, we can obtain a access token by ```clientId``` and ```clientSecret``` without any password or username. 
+
+    ```
+curl -u $clientId:$clientSecret -k -d "grant_type=client_credentials" -H "Content-Type:application/x-www-form-urlencoded" \
+   https://localhost:9443/oauth2/token | jq '.access_token'
+
+    ```
