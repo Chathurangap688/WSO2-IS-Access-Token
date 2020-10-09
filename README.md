@@ -36,7 +36,7 @@ curl -k --user <username>:<password> -X POST "https://localhost:9443/t/carbon.su
         } 
     }}'
 ```
-Here user name and password must be same as IS user name and password.(default user name and password is ```admin``` and ```admin``` )
+Here username and password must be the same as IS username and password.(default username and password is ```admin``` and ```admin``` )
 
 ## Get Application ID
 After registering a new application on IS we need application ID for future requirements.
@@ -46,7 +46,7 @@ curl -k --user <username>:<password>  -X GET "https://localhost:9443/t/carbon.su
 -H  "accept: application/json" | jq '.applications[0].id'
 
 ```
-we can prace responce json by using ```jq```
+we can prace response json by using ```jq```
 (if you haven't install ```jq``` you can install it by ```sudo apt-get install jq```)
 
 ```| jq '.applications[0].id'```
@@ -56,3 +56,15 @@ we can prace responce json by using ```jq```
 Now you can obtain ```clientId``` and ```clientSecret``` by using application ID
 
 ```curl -k --user <username>:<password> -X GET "https://localhost:9443/t/carbon.super/api/server/v1/applications/<app id>/inbound-protocols/oidc" -H  "accept: application/json" )"```
+
+## Obtain Access Token 
+There are several ways to obtain access tokens.
+
+    Authorization Code Grant
+    Implicit Grant
+    Resource Owner Password Credentials Grant
+    Client Credentials Grant
+    Refresh Token Grant
+    Kerberos Grant
+
+ Once we obtain access token by one of these ways, we can access the resource server
