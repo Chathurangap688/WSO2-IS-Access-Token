@@ -37,3 +37,17 @@ curl -k --user <username>:<password> -X POST "https://localhost:9443/t/carbon.su
     }}'
 ```
 Here user name and password must be same as IS user name and password.(default user name and password is ```admin``` and ```admin``` )
+
+## Get Application ID
+After registering a new application on IS we need application ID for future requirements.
+
+```
+curl -k --user <username>:<password>  -X GET "https://localhost:9443/t/carbon.super/api/server/v1/applications?filter=name+eq+<your app name>" \
+-H  "accept: application/json" | jq '.applications[0].id'
+
+```
+we can prace responce json by using ```jq```
+(if you haven't install ```jq``` you can install it by ```sudo apt-get install jq```)
+```| jq '.applications[0].id'```
+
+## Get ```clientId``` and ```clientSecret``` by ```app id```
