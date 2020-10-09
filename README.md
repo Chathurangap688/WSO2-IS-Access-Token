@@ -5,8 +5,8 @@ WSO2 IS(Identity Server) is an open source product which provide number of IAM s
 	Here we discuss a simple method to get an access token of an application which registered on wso2 IS. Before we do this we need to register an application on IS and it needs enable inbound configurations.
 ## Register Application on IS with inbound configurations
 ```curl
-curl -k --user $username:$password -X POST "https://localhost:9443/t/carbon.super/api/server/v1/applications" -H  "Content-Type: application/json" \
--d '{"name":"'$appname'","description":"This is the configuration for Pickup application.",     "inboundProtocolConfiguration": { 
+curl -k --user <username>:<password> -X POST "https://localhost:9443/t/carbon.super/api/server/v1/applications" -H  "Content-Type: application/json" \
+-d '{"name":"'<your app name>'","description":"This is the configuration for Pickup application.",     "inboundProtocolConfiguration": { 
     "oidc": { 
         "grantTypes": ["authorization_code", "refresh_token", "client_credentials"],  
         "callbackURLs": ["regexp=(https://localhost:6443/oauth2client|https://localhost:6443/logout)"],  
@@ -36,3 +36,4 @@ curl -k --user $username:$password -X POST "https://localhost:9443/t/carbon.supe
         } 
     }}'
 ```
+Here user name and password must be same as IS user name and password.(default user name and password is ```admin``` and ```admin``` )
