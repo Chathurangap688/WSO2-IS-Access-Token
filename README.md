@@ -48,6 +48,11 @@ curl -k --user <username>:<password>  -X GET "https://localhost:9443/t/carbon.su
 ```
 we can prace responce json by using ```jq```
 (if you haven't install ```jq``` you can install it by ```sudo apt-get install jq```)
+
 ```| jq '.applications[0].id'```
 
 ## Get ```clientId``` and ```clientSecret``` by ```app id```
+
+Now you can obtain ```clientId``` and ```clientSecret``` by using application ID
+
+```curl -k --user <username>:<password> -X GET "https://localhost:9443/t/carbon.super/api/server/v1/applications/<app id>/inbound-protocols/oidc" -H  "accept: application/json" )"```
